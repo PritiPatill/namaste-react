@@ -16,24 +16,45 @@ import ReactDOM from 'react-dom/client'
 
 */
 
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  [
-    React.createElement(
-        "div",
-        { id: "child" },
-        [React.createElement("h1", {}, "Hello h1"), React.createElement("h2", {}, "Hello h2")]
-      ),
-      React.createElement(
-        "div",
-        { id: "child2" },
-        [React.createElement("h1", {}, "Hello h1"), React.createElement("h2", {}, "Hello h2")]
-      )
-  ]
-);
+// const parent = React.createElement(
+//   "div",
+//   { id: "parent" },
+//   [
+//     React.createElement(
+//         "div",
+//         { id: "child" },
+//         [React.createElement("h1", {}, "Hello h1"), React.createElement("h2", {}, "Hello h2")]
+//       ),
+//       React.createElement(
+//         "div",
+//         { id: "child2" },
+//         [React.createElement("h1", {}, "Hello h1"), React.createElement("h2", {}, "Hello h2")]
+//       ),
+//       React.createContext("div",{}, React.createElement("h1",{}, "hello"))
+//   ]
+// );
 
 // const heading = React.createElement("h1", {id: 'heading'}, "Hello Priti!")
+
+
+const Title = () => (
+    <h1 id="heading">Namaste React function 🚀 </h1>
+)
+
+
+const title = (
+    <h1 id="heading">Namste React variable 🚀 </h1>
+)
+
+const HeadingComponent = () => (
+    <div className='container'>
+        <Title />
+        {Title()}
+        <Title></Title>
+        {title}
+        <h1> This is react functional component</h1>
+    </div>
+)
 const root = ReactDOM.createRoot(document.getElementById("root"));
-console.log(parent);
-root.render(parent);
+
+root.render(<HeadingComponent />);
