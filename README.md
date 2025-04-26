@@ -19,3 +19,22 @@
 - tree shaking - remove unused code
 - different build for dev and production
 
+
+# Namaste food
+/**
+ * Header
+ *  - Logo
+ *  - Nav Items
+ * 
+ * Body
+ *  - Search
+ *  - Restaurant Container
+ *  - Restaurant card
+ * 
+ * Footer
+ *  - Copyright
+ *  - Links
+ *  - Contacts
+ *  - Address
+ */
+
