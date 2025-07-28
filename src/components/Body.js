@@ -1,5 +1,5 @@
 import resObj from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard"
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard"
 import { useEffect, useState } from 'react'
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ const Body = () => {
     const [ listItems, setListItems ] = useState([])
     const [ filterData, setFilterData ] = useState([])
     const [ search, setSearch ] = useState("")
+
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
  
     useEffect(() => {
       console.log("inside use effect")
@@ -32,23 +34,30 @@ const Body = () => {
 
     return (
       <div className="body">
-        <div className="filter">
-          <input className="search-box" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <button onClick={() => {
+        <div className="filter flex">
+          <div className="m-4 p-4">
+          <input className="border border-solid border-black" value={search} onChange={(e) => setSearch(e.target.value)} />
+          <button className="m-4 px-4 py-2 bg-green-200 rounded" onClick={() => {
             const data = listItems?.filter((item) => {
               return item?.info?.name?.toLowerCase()?.includes(search?.toLowerCase())
             })
             setFilterData(data)
           }}>Search</button>
-            <button className="filter-btn" onClick={() => {
+          </div>
+          <div className="m-4 p-4 flex items-center">
+            <button className="px-4 py-2 bg-green-100 m-4 rounded" onClick={() => {
                 const list = listItems.filter(item => item.info.avgRating > 4.3)
                 setListItems(list)
             }}>Filter Top Restaurants</button>
+          </div>
         </div>
-        <div className="res-container">
+        <div className="flex flex-wrap">
           {filterData?.map((item, index) => (
             <Link key={index} to={`/restaurants/${item?.info?.id}`}>
-            <RestaurantCard data={item} key={item?.info?.id} />
+              {
+                item?.info?.avgRating > 4.3 ? <RestaurantCardPromoted data={item} key={item?.info?.id}/> : <RestaurantCard data={item} key={item?.info?.id} />
+              }
+            
             </Link>
           ))}
         </div>
