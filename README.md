@@ -61,3 +61,7 @@
 - Install Babel dependency
 - Configure Babel
 - Configure Parcel config file to disable default babel transpilation
+- Jest configuration - npx create-jest
+- Install jsdom library
+- Install @babel/preset-react and include inside babel config file
+- npm i -D @testing-library/jest-dom
