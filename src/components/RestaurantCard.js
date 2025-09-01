@@ -3,7 +3,7 @@ import { CDN_LINK } from "../utils/constants";
 const RestaurantCard = ({ data }) => {
   console.log("data ----", data)
     return (
-      <div className="m-4 p-4 w-[250px] bg-gray-100 hover:bg-gray-200 rounded-lg">
+      <div test-id="resCard" className="m-4 p-4 w-[250px] bg-gray-100 hover:bg-gray-200 rounded-lg">
         <img
         className=" rounded-lg"
           src={`${CDN_LINK}${data?.info?.cloudinaryImageId}`}

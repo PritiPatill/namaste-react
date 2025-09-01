@@ -195,6 +195,10 @@ const config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+  transform: {
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
+  },
+  moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
 };
 
 module.exports = config;

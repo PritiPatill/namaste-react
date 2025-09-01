@@ -18,7 +18,7 @@ const Body = () => {
     }, [])
 
     const fetchData = async () => {
-      const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+      const data  = await fetch ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.9974&lng=79.0011&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
       const json = await data?.json()
       setListItems(json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       setFilterData(json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
@@ -36,7 +36,7 @@ const Body = () => {
       <div className="body">
         <div className="filter flex">
           <div className="m-4 p-4">
-          <input className="border border-solid border-black" value={search} onChange={(e) => setSearch(e.target.value)} />
+          <input data-testid="searchInput" className="border border-solid border-black" value={search} onChange={(e) => setSearch(e.target.value)} />
           <button className="m-4 px-4 py-2 bg-green-200 rounded" onClick={() => {
             const data = listItems?.filter((item) => {
               return item?.info?.name?.toLowerCase()?.includes(search?.toLowerCase())
